@@ -1,5 +1,6 @@
 package de.viadee.bpm;
 
+import de.viadee.bpm.entity.Species;
 import de.viadee.bpm.services.StarWarsApi;
 import org.flowable.engine.delegate.DelegateExecution;
 import org.flowable.engine.delegate.JavaDelegate;
@@ -8,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 import static java.util.UUID.randomUUID;
@@ -26,12 +28,14 @@ public class GetSpeciesDelegate implements JavaDelegate {
     public void execute(final DelegateExecution execution) {
         log.info("may the force be with you!");
 
-        var options = starWarsApi.getSpecies()
-                                          .stream()
-                                          .map(s -> optionWithId(s.getName()))
-                                          .collect(Collectors.toList());
+        List<Species> species = starWarsApi.getSpecies();
+
+        var options = species.stream()
+                             .map(s -> optionWithId(s.getName()))
+                             .collect(Collectors.toList());
 
         execution.setVariable("extIn_species", options);
+        //execution.setVariable("all_species", species);
 
     }
 

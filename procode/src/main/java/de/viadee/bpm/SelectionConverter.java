@@ -1,5 +1,6 @@
 package de.viadee.bpm;
 
+import de.viadee.bpm.entity.Species;
 import org.flowable.engine.delegate.DelegateExecution;
 import org.flowable.engine.delegate.JavaDelegate;
 import org.flowable.form.model.Option;
@@ -18,8 +19,11 @@ public class SelectionConverter implements JavaDelegate {
     public void execute(final DelegateExecution execution) {
         var id = (String) execution.getVariable("selected_species");
         List<Option> options = (List<Option>) execution.getVariable("extIn_species");
+        //List<Species> allSpecies = (List<Species>) execution.getVariable("all_species");
+
         var convertedSpecies = options.stream().filter(opt -> id.equals(opt.getId())).findFirst().orElseThrow().getName();
+        //var mySpecies = allSpecies.stream().filter(s -> s.getName().equals(convertedSpecies)).findFirst().orElseThrow();
+
         execution.setVariable("converted_species", convertedSpecies);
-        log.info("convertedSpecies: {}", convertedSpecies);
     }
 }
