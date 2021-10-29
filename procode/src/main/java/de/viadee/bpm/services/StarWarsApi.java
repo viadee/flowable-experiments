@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import de.viadee.bpm.entity.Person;
 import de.viadee.bpm.entity.Species;
 import de.viadee.bpm.entity.SpeciesList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +28,28 @@ public class StarWarsApi {
         return getSpecies(results);
     }
 
+    public List<Person> getPersonsForSpecies(Species species){
+        List<Person> results = Lists.newArrayList();
+        for(String peopleUrl : species.getPeople()){
+            String jsonString = restTemplate.getForObject(peopleUrl, String.class);
+            results.add(getPerson(jsonString));
+        }
+        return results;
+    }
+
+    public int getPersonCountForSpecies(Species species){
+        return species.getPeople().size();
+    }
+
     public JsonObject deserialize(String json) {
         Gson gson = new Gson();
         JsonObject jsonClass = gson.fromJson(json, JsonObject.class);
         return jsonClass;
+    }
+
+    public Person getPerson(String jsonPerson){
+        Gson gson = new Gson();
+        return gson.fromJson(jsonPerson,Person.class);
     }
 
     public List<Species> getSpecies(JsonArray array){

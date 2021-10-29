@@ -23,6 +23,15 @@ public class Species {
     private String skin_colors;
     private String language;
     private String homeworld;
+
+    public List<String> getPeople() {
+        return people;
+    }
+
+    public void setPeople(List<String> people) {
+        this.people = people;
+    }
+
     private List<String> people;
 
     public String getName() {
