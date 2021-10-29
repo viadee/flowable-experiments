@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Component
@@ -18,6 +19,7 @@ public class ProcessContextLoggerDelegate implements JavaDelegate {
         var variables = execution.getVariables()
                                  .entrySet()
                                  .stream()
+                                 .sorted(Map.Entry.comparingByKey())
                                  .map(e -> "\tkey: " + e.getKey() + ", val: " + e.getValue())
                                  .collect(Collectors.joining("; \n"));
 
