@@ -1,4 +1,4 @@
-*.mv.db
-*.trace.db
-procode/.idea/
-target/
+/**/*.mv.db
+/**/*.trace.db
+/**/.idea/*
+/**/target/*
