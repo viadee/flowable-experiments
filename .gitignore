@@ -1,4 +1,5 @@
 /**/*.mv.db
+/**/*.lock.db
 /**/*.trace.db
 /**/.idea/*
 /**/target/*
