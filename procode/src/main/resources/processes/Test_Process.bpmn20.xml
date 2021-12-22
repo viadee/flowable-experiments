@@ -3,9 +3,11 @@
   <process id="test-process" name="Test Process" isExecutable="true">
     <startEvent id="startEvent1" flowable:formFieldValidation="true"></startEvent>
     <userTask id="sid-E28091A4-4E96-4152-8D41-0DA078253AEE" name="Hier bitte warten" flowable:formFieldValidation="true"></userTask>
-    <sequenceFlow id="sid-5516DE39-37BC-42E0-81E8-566935E204A6" sourceRef="startEvent1" targetRef="sid-E28091A4-4E96-4152-8D41-0DA078253AEE"></sequenceFlow>
     <endEvent id="sid-4263B021-53D9-4B9A-B667-FAF4AD8C839C"></endEvent>
     <sequenceFlow id="sid-40D30613-D612-4C77-B8F3-D8705AD2F3FB" sourceRef="sid-E28091A4-4E96-4152-8D41-0DA078253AEE" targetRef="sid-4263B021-53D9-4B9A-B667-FAF4AD8C839C"></sequenceFlow>
+    <serviceTask id="sid-869C8AB1-FA3A-4FFE-9E7F-F09078B78E7A" name="Test Delegate" flowable:async="false" flowable:exclusive="false" flowable:delegateExpression="${testDelegate}"></serviceTask>
+    <sequenceFlow id="sid-5516DE39-37BC-42E0-81E8-566935E204A6" sourceRef="startEvent1" targetRef="sid-869C8AB1-FA3A-4FFE-9E7F-F09078B78E7A"></sequenceFlow>
+    <sequenceFlow id="sid-6A7FF278-F97B-4694-A2C1-37C0CC6842CE" sourceRef="sid-869C8AB1-FA3A-4FFE-9E7F-F09078B78E7A" targetRef="sid-E28091A4-4E96-4152-8D41-0DA078253AEE"></sequenceFlow>
   </process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_test-process">
     <bpmndi:BPMNPlane bpmnElement="test-process" id="BPMNPlane_test-process">
@@ -13,18 +15,25 @@
         <omgdc:Bounds height="30.0" width="30.0" x="100.0" y="163.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="sid-E28091A4-4E96-4152-8D41-0DA078253AEE" id="BPMNShape_sid-E28091A4-4E96-4152-8D41-0DA078253AEE">
-        <omgdc:Bounds height="80.0" width="100.0" x="225.0" y="138.0"></omgdc:Bounds>
+        <omgdc:Bounds height="80.0" width="100.0" x="375.0" y="138.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="sid-4263B021-53D9-4B9A-B667-FAF4AD8C839C" id="BPMNShape_sid-4263B021-53D9-4B9A-B667-FAF4AD8C839C">
-        <omgdc:Bounds height="28.0" width="28.0" x="420.0" y="164.0"></omgdc:Bounds>
+        <omgdc:Bounds height="28.0" width="28.0" x="540.0" y="164.0"></omgdc:Bounds>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge bpmnElement="sid-5516DE39-37BC-42E0-81E8-566935E204A6" id="BPMNEdge_sid-5516DE39-37BC-42E0-81E8-566935E204A6" flowable:sourceDockerX="15.0" flowable:sourceDockerY="15.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
-        <omgdi:waypoint x="129.94999928606217" y="178.0"></omgdi:waypoint>
-        <omgdi:waypoint x="224.99999999995185" y="178.0"></omgdi:waypoint>
+      <bpmndi:BPMNShape bpmnElement="sid-869C8AB1-FA3A-4FFE-9E7F-F09078B78E7A" id="BPMNShape_sid-869C8AB1-FA3A-4FFE-9E7F-F09078B78E7A">
+        <omgdc:Bounds height="80.0" width="100.0" x="195.0" y="138.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-6A7FF278-F97B-4694-A2C1-37C0CC6842CE" id="BPMNEdge_sid-6A7FF278-F97B-4694-A2C1-37C0CC6842CE" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="294.9499999999431" y="178.0"></omgdi:waypoint>
+        <omgdi:waypoint x="374.99999999997226" y="178.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="sid-40D30613-D612-4C77-B8F3-D8705AD2F3FB" id="BPMNEdge_sid-40D30613-D612-4C77-B8F3-D8705AD2F3FB" flowable:sourceDockerX="50.0" flowable:sourceDockerY="40.0" flowable:targetDockerX="14.0" flowable:targetDockerY="14.0">
-        <omgdi:waypoint x="324.94999999996054" y="178.0"></omgdi:waypoint>
-        <omgdi:waypoint x="420.0" y="178.0"></omgdi:waypoint>
+        <omgdi:waypoint x="474.95000000000005" y="178.0"></omgdi:waypoint>
+        <omgdi:waypoint x="540.0" y="178.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-5516DE39-37BC-42E0-81E8-566935E204A6" id="BPMNEdge_sid-5516DE39-37BC-42E0-81E8-566935E204A6" flowable:sourceDockerX="15.0" flowable:sourceDockerY="15.0" flowable:targetDockerX="50.0" flowable:targetDockerY="40.0">
+        <omgdi:waypoint x="129.94999891869114" y="178.0"></omgdi:waypoint>
+        <omgdi:waypoint x="194.99999999999022" y="178.0"></omgdi:waypoint>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
