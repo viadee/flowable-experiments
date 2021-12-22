@@ -1,6 +1,5 @@
-package de.viadee.bpm;
+package de.viadee.bpm.delegate;
 
-import de.viadee.bpm.entity.Species;
 import org.flowable.engine.delegate.DelegateExecution;
 import org.flowable.engine.delegate.JavaDelegate;
 import org.flowable.form.model.Option;
