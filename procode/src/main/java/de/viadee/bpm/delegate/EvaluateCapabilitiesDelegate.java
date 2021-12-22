@@ -1,7 +1,7 @@
 package de.viadee.bpm.delegate;
 
 import de.viadee.bpm.entity.Person;
-import de.viadee.bpm.services.StarWarsApi;
+import de.viadee.bpm.service.StarWarsApi;
 import org.flowable.engine.delegate.DelegateExecution;
 import org.flowable.engine.delegate.JavaDelegate;
 import org.springframework.stereotype.Component;
